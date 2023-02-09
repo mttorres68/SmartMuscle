@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F65006',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingEnd: '',
     color: 'red',
   },
   title:{
     color: '#FFF',
+    fontSize: 70,
   }
 });
