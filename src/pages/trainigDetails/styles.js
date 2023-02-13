@@ -41,7 +41,10 @@ const styles = StyleSheet.create({
         width:120,
         height:100,
         backgroundColor:"#F49D1A",
-        borderRadius:6
+        borderRadius:6,
+        padding: 10,
+        marginVertical: 8,
+        marginHorizontal: 12,
     },
     details: {
         textAlign:"center",
@@ -62,7 +65,23 @@ const styles = StyleSheet.create({
         alignItems:"center",
         flexDirection:"row"
         
-    }
+    },
+    diaSemana: {
+        backgroundColor: '#f9c2ff',
+        padding: 10,
+        marginVertical: 8,
+        marginHorizontal: 12,
+    },
+    item: {
+        backgroundColor: "#f9c2ff",
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+    },
+    ctr: {
+        flex: 1,        
+      },
+    
 
 });
 

@@ -1,14 +1,41 @@
 import React from "react";
-import { View, Text, SafeAreaView, StatusBar,ScrollView } from "react-native";
+import { View, Text, SafeAreaView, StatusBar,FlatList } from "react-native";
 import styles from "./styles";
 import { MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { AppBar } from "@react-native-material/core";
 
 
-export default function TrainigDetails({navigation}){
 
-    const  iconPress = () => {        
-        console.log("icons presionado");
+
+export default function TrainigDetails({navigation}){
+    const Cards = [
+        {
+            id:'1',
+            diaSemana: 'Segunda',
+            exercicio:'treino 01'
+        },
+        {
+            id:'2',
+            diaSemana: 'terca',
+            exercicio:'treino 02'
+        },
+        {
+            id:'3',
+            diaSemana: 'quarta',
+            exercicio:'treino 03'
+        },
+        {
+            id:'4',
+            diaSemana: 'quinta',
+            exercicio:'treino 04'
+        },
+    ]
+    
+    const Item = ({diaSemana, exercicio}) => {
+        <View style={styles.item}>
+            <Text style={styles.title}>{diaSemana}</Text>
+            <Text>{exercicio}</Text>
+        </View>
     }
 
     return (
@@ -21,83 +48,14 @@ export default function TrainigDetails({navigation}){
                     SmartMuscle
                 </Text>
             </View>
-            <ScrollView style={styles.containerTrainig}>
-                <View style={styles.viewList}>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                    <View style={styles.trainig}>
-                        <Text style={styles.details}>Segunda</Text>
-                    </View>
-                </View>
-            </ScrollView>
-
-            <Text>
-                Page training
-                
-            </Text>
+            <View style={styles.ctr}>
+                <FlatList
+                    data={Cards}
+                    renderItem={({item}) => <Item diaSemana={item.diaSemana} exercicio={item.exercicio} />}
+                    keyExtractor={(item) => item.id}
+                />
+            </View>      
             
-            {/* <View style={styles.appBar}>
-                <View>
-                    <MaterialIcons 
-                        name="data-usage" 
-                        size={35} 
-                        color="#F2F2F2" 
-                        onPress={() => navigation.navigate('TrainigData')} 
-                    />
-                </View> 
-                <View>
-                    <AntDesign name="home" size={35} color="#F2F2F2" />
-                </View>
-                
-                <View>
-                <AntDesign name="user" size={35} color="#F2F2F2" />
-
-                </View>
-                
-            </View> */}
         </SafeAreaView>
 
     )
