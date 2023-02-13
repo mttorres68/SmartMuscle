@@ -1,16 +1,44 @@
-import React from "react";
-import { View, Text } from "react-native";
-import firebase from "../../config/firebase";
+import React, { useEffect } from "react";
+import { View, Text, StatusBar,TouchableOpacity } from "react-native";
+import styles from "./style";
+import {  onAuthStateChanged } from "firebase/auth";
+import auth from "../../config/firebase.js";
 
-export default function Home(){
-    const database = firebase.firestore()
 
+export default function Home({navigation}){
 
+    useEffect(() =>{        
+        onAuthStateChanged(auth, (user) => {
+            if (user) {                
+                navigation.navigate("PageTrainig", {idUser: user.id})                
+            }
+            });
+    }, []);
     return (
-        <View>
-            <Text>
-                Page inicial!
+        <View style={styles.container}>
+            <StatusBar backgroundColor="#F65006"/>
+            <Text style={styles.title}>
+                SmartMuscle
             </Text>
+            <View style={styles.button}>
+                <TouchableOpacity
+                    style={styles.buttonSingUp}
+                    onPress={() => navigation.navigate("SingUp")}
+                    
+                >
+                    <Text style={styles.textButtonSingUp}>
+                        Sing Up
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttonLogin}
+                    onPress={() => navigation.navigate("Login")}
+                >
+                    <Text style={styles.textButtonLogin}>
+                        Login
+                    </Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
