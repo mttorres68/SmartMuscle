@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
+
+const width = Dimensions.get('window').width - 24
 
 const styles = StyleSheet.create({
     container: {
@@ -19,32 +21,79 @@ const styles = StyleSheet.create({
         width:400,
     },
     title:{
-        fontSize:28,
+        fontSize:32,
         color:"#FFFFFF",
         fontWeight:"bold",
         fontStyle:"italic",
     },
-    containerTrainig: {
-        height:587,
-        width:320,
-        backgroundColor:"#F2F2F2",
-        marginTop:40,
-        borderRadius:6,
-        padding:20,        
+    viewTreinos: {
+        marginTop:20,
+        marginStart:40,
+        justifyContent:'flex-start',
+        alignItems:'flex-start',
+        width:318,        
     },
+    textTreinos: {
+        fontSize:30,
+        fontStyle:'italic',
+        fontWeight:'500',
+        color:'#F2F2F2',
+    },
+    containerTrainig: {
+        height:320,
+        width:width,
+        backgroundColor:"#F2F2F2",
+        marginTop:5,
+        borderRadius:6,
+        paddingStart:10,
+        paddingEnd:10,
+        alignItems:'center',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: -2,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    containerTextSmarMuscle: {
+        width:width - 20,
+        marginTop:5,
+    },
+    textTreinoSmartMuscle: {
+        fontSize:18,
+        fontWeight:'500',
+        color:'#374046'
+    },
+    cardTrainig: {
+        width:250,
+        height:60,
+        backgroundColor:"#F49D1A",        
+        padding: 5,
+        marginVertical:5,
+        borderRadius:6,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 2,
+            height: 0,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 6,
+        elevation: 2,
+
+    },
+    iconContainer:{
+        alignItems: "flex-end",
+        justifyContent: "flex-end",
+        alignContent: "flex-end",
+        width:250,        
+    },
+    
     viewList: {        
         alignContent:'space-between',
         alignItems:'center',
         justifyContent:'space-between'
-    },
-    trainig: {
-        width:120,
-        height:100,
-        backgroundColor:"#F49D1A",
-        borderRadius:6,
-        padding: 10,
-        marginVertical: 8,
-        marginHorizontal: 12,
     },
     details: {
         textAlign:"center",
@@ -67,22 +116,9 @@ const styles = StyleSheet.create({
         
     },
     diaSemana: {
-        backgroundColor: '#f9c2ff',
-        padding: 10,
-        marginVertical: 8,
-        marginHorizontal: 12,
+        color:'#374046',
+        fontSize:16,
     },
-    item: {
-        backgroundColor: "#f9c2ff",
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
-    },
-    ctr: {
-        flex: 1,        
-      },
-    
-
 });
 
 export default styles

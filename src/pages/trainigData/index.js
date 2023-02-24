@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, SafeAreaView, FlatList, StyleSheet,StatusBar } from "react-native";
 
 const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-  },
+    {
+        id:'1',
+        title: 'Segunda',        
+    },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
     title: "Second Item",
@@ -13,7 +13,34 @@ const DATA = [
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
     title: "Third Item",
-  },
+  }, {
+    id:'2',
+    title: 'terca',    
+},
+{
+    id:'3',
+    title: 'quarta',
+    
+},
+{
+    id:'4',
+    title: 'quinta',
+    
+},
+{
+    id:'5',
+    title:'amanha'
+},
+{
+    id:'6',
+    title:'deposi'
+},{
+    id:'7',
+    title:'swsws'
+},{
+    id:'8',
+    title:'wsws3'
+},
 ];
 
 const Item = ({ title }) => (
@@ -42,8 +69,7 @@ export default function TrainigData() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  container: {    flex: 1,
     marginTop: StatusBar.currentHeight || 0,
     alignItems: 'center'
   },

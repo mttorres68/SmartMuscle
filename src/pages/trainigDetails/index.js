@@ -1,42 +1,26 @@
-import React from "react";
-import { View, Text, SafeAreaView, StatusBar,FlatList } from "react-native";
+import React, { useState } from "react";
+import { View, Text, SafeAreaView, StatusBar,FlatList, TouchableOpacity } from "react-native";
 import styles from "./styles";
-import { MaterialIcons, AntDesign } from '@expo/vector-icons';
-import { AppBar } from "@react-native-material/core";
+import {Ionicons} from '@expo/vector-icons';
 
+import db from "../../config/database.js";
 
+import { collection, getDocs, query, where, collectionGroup, setDoc, doc, orderBy } from "firebase/firestore"; 
 
+import auth from "../../config/firebase";
 
-export default function TrainigDetails({navigation}){
-    const Cards = [
-        {
-            id:'1',
-            diaSemana: 'Segunda',
-            exercicio:'treino 01'
-        },
-        {
-            id:'2',
-            diaSemana: 'terca',
-            exercicio:'treino 02'
-        },
-        {
-            id:'3',
-            diaSemana: 'quarta',
-            exercicio:'treino 03'
-        },
-        {
-            id:'4',
-            diaSemana: 'quinta',
-            exercicio:'treino 04'
-        },
-    ]
-    
-    const Item = ({diaSemana, exercicio}) => {
-        <View style={styles.item}>
-            <Text style={styles.title}>{diaSemana}</Text>
-            <Text>{exercicio}</Text>
-        </View>
+export default function TrainigDetails({navigation}){    
+    const [treino, setTreino] = useState([])
+    const uid = auth.currentUser.uid;
+    let i;
+    const teste = []
+    const renderItem = ({item}) => <Item {...item} />
+
+    for(i = 0; i < 3; i++ ){
+        teste.push(`rept${i}` )
     }
+
+    console.log(teste);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -48,12 +32,35 @@ export default function TrainigDetails({navigation}){
                     SmartMuscle
                 </Text>
             </View>
-            <View style={styles.ctr}>
+            <View style={styles.viewTreinos}>
+                <Text style={styles.textTreinos}>
+                    Treinos
+                </Text>
+            </View>
+            <View style={styles.containerTrainig}>
+                <View style={styles.containerTextSmarMuscle}>
+                    <Text style={styles.textTreinoSmartMuscle}>
+                        Treino SmartMuscle
+                    </Text>
+                </View>
                 <FlatList
-                    data={Cards}
-                    renderItem={({item}) => <Item diaSemana={item.diaSemana} exercicio={item.exercicio} />}
-                    keyExtractor={(item) => item.id}
+                    showsVerticalScrollIndicator={false}
                 />
+            </View>      
+            <View style={styles.containerTrainig}>
+            <View style={styles.containerTextSmarMuscle}>
+                    <Text style={styles.textTreinoSmartMuscle}>
+                        Meu Treino 
+                    </Text>
+            </View>
+                <FlatList
+                />
+                <View style={styles.iconContainer}>
+                    <TouchableOpacity
+                    >
+                        <Ionicons name='add-circle' size={40} color="#F65006"  />
+                    </TouchableOpacity>
+                </View>
             </View>      
             
         </SafeAreaView>

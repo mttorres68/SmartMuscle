@@ -33,7 +33,7 @@ export default function Login({navigation}){
             setErrorLogin(true)
             let errorCode = error.code;
             let errorMessage = error.message;
-          // ..
+            // ..
         });
     }
 
@@ -42,7 +42,7 @@ export default function Login({navigation}){
             if (user) {                
                 navigation.navigate("PageTrainig", {idUser: user.id})                
             }
-            });
+        });        
     }, []);
 
     return (
