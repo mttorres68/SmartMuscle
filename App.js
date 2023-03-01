@@ -3,28 +3,114 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createStackNavigator} from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { Dimensions, Text, View } from 'react-native';
 
+// PAGINAS
 import Home from './src/pages/home';
 import Login from './src/pages/login';
 import SingUp from './src/pages/SingUp';
-import TrainigDetails from './src/pages/trainigDetails';
 import TrainigData from './src/pages/trainigData';
 import UserProfile from './src/pages/userProfile';
-import traingSmart from './src/pages/trainigDetails/traingSmart';
-import myTraing from './src/pages/trainigDetails/myTraing/index'
-import { Ionicons } from '@expo/vector-icons';
-import { Dimensions } from 'react-native';
+
+import myTraing from './src/pages/trainig/myTraing/'
+import Trainig from './src/pages/trainig';
+import TraingSmart from './src/pages/trainig/traingSmart';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const TopTabs = createMaterialTopTabNavigator();
 
+
+const Segunda = () =>{
+
+  return(
+    <View>
+      <Text>
+        Segunda
+      </Text>
+    </View>
+  )
+}
+const Quarta = () =>{
+
+  return(
+    <View>
+      <Text>
+        Terça
+      </Text>
+    </View>
+  )
+}
+const Quinta = () =>{
+
+  return(
+    <View>
+      <Text>
+      Quinta
+      </Text>
+    </View>
+  )
+}
+const Sexta = () =>{
+
+  return(
+    <View>
+      <Text>
+      Sexta
+      </Text>
+    </View>
+  )
+}
+const Sabado = () =>{
+
+  return(
+    <View>
+      <Text>
+      Sabado
+      </Text>
+    </View>
+  )
+}
+const Terca = () =>{
+
+  return(
+    <View>
+      <Text>
+        Terça
+      </Text>
+    </View>
+  )
+}
+
+
+function TreinosSemanas(){
+  return(
+    <TopTabs.Navigator
+      screenOptions={({route}) => ({
+        tabBarStyle:{
+          position:'relative'
+        }
+      })}
+    >      
+        <TopTabs.Screen name='Seg' component={Segunda}/>
+        <TopTabs.Screen name='Ter' component={Terca}/>
+        <TopTabs.Screen name='Qua' component={Quarta}/>      
+        <TopTabs.Screen name='Qui' component={Quinta}/>      
+        <TopTabs.Screen name='Sex' component={Sexta}/>      
+        <TopTabs.Screen name='Sab' children={Sabado}/>
+
+    </TopTabs.Navigator>
+  )
+}
+
+// ROTAS DE TREINOS -SMART -PESSOAL
 function Traing(){
   const width = Dimensions.get('window').width
 
+
   return(
-    <TopTabs.Navigator
+    <TopTabs.Navigator      
       screenOptions={({ route }) => ({
         tabBarStyle: {
           width: width,
@@ -35,7 +121,7 @@ function Traing(){
         tabBarLabelStyle: { 
           fontSize: 18,
           fontWeight:'500',
-          textTransform:'capitalize'          
+          textTransform:'capitalize',
         },
         tabBarShowLabel:true,
         lazy: true,
@@ -47,15 +133,16 @@ function Traing(){
           backgroundColor:'#DE4217'
         }
       })}
-    >
+    >           
       <TopTabs.Screen 
         name='Treino SmartMuscle'
-        component={traingSmart}
+        component={TraingSmart}
         options={{
           headerShown:false,
           tabBarPressColor:'#F54645',
         }}
       />
+
       <TopTabs.Screen 
         name='Meu Treino'
         component={myTraing}
@@ -63,16 +150,17 @@ function Traing(){
           tabBarLabel:'Meu Treino',
           headerShown:true,
           tabBarPressColor:'#F54645',
-        }}
+        }}        
       />
-
     </TopTabs.Navigator>
   )
 }
 
+// ROTAS DA TAB BAR -TREINOS -DADOS -PERFIL
 function Tabs(){  
+
   return(
-    <Tab.Navigator
+    <Tab.Navigator    
       screenOptions={({ route }) => ({        
         tabBarIcon: ({focused, color, size}) => {
           let iconName;          

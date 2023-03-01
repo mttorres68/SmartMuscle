@@ -1,11 +1,11 @@
 import { Text, View } from "react-native"
 
-export default TraingSmart = () =>{
+export default function MyTraing (){
 
     return(
         <View>
             <Text>
-                Treino SmartMuscle
+                Meu Treino
             </Text>
         </View>
     )
